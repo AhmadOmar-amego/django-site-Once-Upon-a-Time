@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% include 'navbar.html' %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+{% block body %}
+    <!-- FORM SEARCH -->
+    <div class="form"style="font-size:15px;" >
+      <form method ="GET" action="{% url 'medicine_1:search_recommender'  %}">
+        <label for="form-search"></label>
+        <input  name="q"  value="{{request.GET.q}}"  type="text" id="form-search" placeholder="What you are looking for?">
+          <div class="button">
+<button class="btn btn-success" type="submit">Search</button>>
+    </div>
+      </form>
+
+    </div>
+
+    <!-- BUTTONS -->
+
+
+
+<div class="albums-container container-fluid">
+
+    <!-- Albums -->
+    <div class="row">
+
+        {% if data %}
+                        <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail">
+
+                        <div class="caption">
+                            <h1>{{data|safe  }}</h1>
+                                      <h1>{{h1|safe  }}</h1>
+                                 <h1>{{method_2|safe  }}</h1>
+               </div>
+                    </div>
+                </div>
+             {% endif %}
+ <div class="albums-container container-fluid">
+
+    <!-- Albums -->
+    <div class="row">
+ <div class="col">
+        {% if model %}
+
+            {% for album in model %}
+                <div class="col-md-6 col-lg-6">
+                    <div class="thumbnail">
+                        <a href="{% url 'medicine_1:medicine___' album.id  %} ">
+                            <img src="{{ album.logo_medicine.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <h2>{{ album.medicine_title }}</h2>
+                            <h4>{{ album.place_of_medicine }}</h4>
+                        </div>
+                    </div>
+                </div>
+
+             {% endfor %}
+        {% else %}
+
+
+        <div class="h3_amego">
+
+<div class="p_amego_2">
+        <p align="center">We are Sorry We Not Found Your Medicine  -_-</p>
+        </div>
+                 </div>
+                {% endif %}
+   </div>
+
+
+
+
+{% endblock %}
+
+{% include 'adds_on/footer.html' %}
+</body>
+</html>

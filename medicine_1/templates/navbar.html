@@ -1,0 +1,360 @@
+{%  include 'jc_css_script/css.html' %}
+{%  include 'jc_css_script/js.html' %}
+
+{% load static %}
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+
+<style type="text/css">
+
+	body{
+		font-family: 'Varela Round', sans-serif;
+	}
+	.form-control {
+		box-shadow: none;
+		font-weight: normal;
+		font-size: 13px;
+	}
+	.form-control:focus {
+		border-color: #33cabb;
+		box-shadow: 0 0 8px rgba(0,0,0,0.1);
+	}
+	.navbar-header.col {
+		padding: 0 !important;
+	}
+	.navbar {
+		background: #fff;
+		padding-left: 16px;
+		padding-right: 16px;
+		border-bottom: 1px solid #dfe3e8;
+		border-radius: 0;
+	}
+	.nav-link img {
+		border-radius: 50%;
+		width: 36px;
+		height: 36px;
+		margin: -8px 0;
+		float: left;
+		margin-right: 10px;
+	}
+	.navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
+		padding-left: 0;
+		font-size: 30px;
+		padding-right: 50px;
+	}
+	.navbar .navbar-brand b {
+		font-weight: bold;
+		color: #c94a38;
+	}
+	.navbar .form-inline {
+        display: inline-block;
+    }
+	.navbar .nav li {
+		position: relative;
+	}
+	.navbar .nav li a {
+		color: #888;
+	}
+	.search-box {
+        position: relative;
+    }
+    .search-box input {
+        padding-right: 35px;
+		border-color: #dfe3e8;
+        border-radius: 4px !important;
+		box-shadow: none
+    }
+	.search-box .input-group-addon {
+        min-width: 35px;
+        border: none;
+        background: transparent;
+        position: absolute;
+        right: 0;
+        z-index: 9;
+        padding: 7px;
+		height: 100%;
+    }
+    .search-box i {
+        color: #a0a5b1;
+		font-size: 19px;
+    }
+	.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+		color: #fff;
+		background: #33cabb;
+		padding-top: 8px;
+		padding-bottom: 6px;
+		vertical-align: middle;
+		border: none;
+	}
+	.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {
+		color: #fff;
+		outline: none;
+		background: #31bfb1;
+	}
+	.navbar .navbar-right li:first-child a {
+		padding-right: 30px;
+	}
+	.navbar .nav-item i {
+		font-size: 29px;
+	}
+	.navbar .dropdown-item i {
+		font-size: 16px;
+		min-width: 22px;
+	}
+	.navbar ul.nav li.active a, .navbar ul.nav li.open > a {
+		background: transparent !important;
+	}
+	.navbar .nav .get-started-btn {
+		min-width: 120px;
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+	.navbar ul.nav li.open > a.get-started-btn {
+		color: #fff;
+		background: #31bfb1 !important;
+	}
+	.navbar .dropdown-menu {
+		border-radius: 1px;
+		border-color: #e5e5e5;
+		box-shadow: 0 2px 8px rgba(0,0,0,.05);
+	}
+	.navbar .nav .dropdown-menu li {
+		color: #999;
+		font-weight: normal;
+	}
+	.navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
+		padding: 8px 20px;
+		line-height: normal;
+	}
+	.navbar .navbar-form {
+		border: none;
+	}
+	.navbar .dropdown-menu.form-wrapper {
+		width: 280px;
+		padding: 20px;
+		left: auto;
+		right: 0;
+        font-size: 14px;
+	}
+	.navbar .dropdown-menu.form-wrapper a {
+		color: #33cabb;
+		padding: 0 !important;
+	}
+	.navbar .dropdown-menu.form-wrapper a:hover{
+		text-decoration: underline;
+	}
+	.navbar .form-wrapper .hint-text {
+		text-align: center;
+		margin-bottom: 15px;
+		font-size: 13px;
+	}
+	.navbar .form-wrapper .social-btn .btn, .navbar .form-wrapper .social-btn .btn:hover {
+		color: #fff;
+        margin: 0;
+		padding: 0 !important;
+		font-size: 13px;
+		border: none;
+		transition: all 0.4s;
+		text-align: center;
+		line-height: 34px;
+		width: 47%;
+		text-decoration: none;
+    }
+	.navbar .social-btn .btn-primary {
+		background: #507cc0;
+	}
+	.navbar .social-btn .btn-primary:hover {
+		background: #4676bd;
+	}
+	.navbar .social-btn .btn-info {
+		background: #64ccf1;
+	}
+	.navbar .social-btn .btn-info:hover {
+		background: #4ec7ef;
+	}
+	.navbar .social-btn .btn i {
+		margin-right: 5px;
+		font-size: 16px;
+		position: relative;
+		top: 2px;
+	}
+	.navbar .form-wrapper .form-footer {
+		text-align: center;
+		padding-top: 10px;
+		font-size: 13px;
+	}
+	.navbar .form-wrapper .form-footer a:hover{
+		text-decoration: underline;
+	}
+	.navbar .form-wrapper .checkbox-inline input {
+		margin-top: 3px;
+	}
+	.or-seperator {
+        margin-top: 32px;
+		text-align: center;
+		border-top: 1px solid #e0e0e0;
+    }
+    .or-seperator b {
+		color: #666;
+        padding: 0 8px;
+		width: 30px;
+		height: 30px;
+		font-size: 13px;
+		text-align: center;
+		line-height: 26px;
+		background: #fff;
+		display: inline-block;
+		border: 1px solid #e0e0e0;
+		border-radius: 50%;
+		position: relative;
+		top: -15px;
+		z-index: 1;
+    }
+    .navbar .checkbox-inline {
+		font-size: 13px;
+	}
+	.navbar .navbar-right .dropdown-toggle::after {
+		display: none;
+	}
+	@media (min-width: 1200px){
+		.form-inline .input-group {
+			width: 300px;
+			margin-left: 30px;
+		}
+	}
+	@media (max-width: 768px){
+		.navbar .dropdown-menu.form-wrapper {
+			width: 100%;
+			padding: 10px 15px;
+			background: transparent;
+			border: none;
+		}
+		.navbar .form-inline {
+			display: block;
+		}
+		.navbar .input-group {
+			width: 100%;
+		}
+		.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+			display: block;
+		}
+	}
+
+.f_size{
+font-size: 13px;
+}
+.navbar-bbbb {
+	color: black;
+   font-family: 'Lobster', cursive;
+
+   top:30px;
+}
+.btn-amego{
+background-color: #c94a38;
+color: white;
+}
+</style>
+<script type="text/javascript">
+	// Prevent dropdown menu from closing when click inside the form
+	$(document).on("click", ".navbar-right .dropdown-menu", function(e){
+		e.stopPropagation();
+	});
+</script>
+{% block body %}
+<nav class="navbar navbar-default navbar-expand-lg navbar-light">
+	<div class="navbar-header d-flex col">
+        <div class="navbar-bbbb" >
+
+			<a class="navbar-brand"   href="{% url 'medicine_1:index' %}"> once upon<b>a Time</b></a>
+
+		 </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+	</div>
+	<!-- Collection of nav links, forms, and other content for toggling -->
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+		<div class="f_size">
+      <li class="nav-item">
+
+		<a class="nav-link" href="{% url 'medicine_1:all_medicine'   %}"><span class="glyphicon glyphicon-list-alt"aria-hidden="true"></span><strong>  ALL Book Here</strong></a>
+
+      </li>
+			</div>
+		<div class="f_size">
+      <li class="nav-item">
+
+        <a class="nav-link" href="{% url 'medicine_1:your_medicine' %}"> <span class="glyphicon glyphicon-briefcase"aria-hidden="true" > </span><strong>   Profile </strong></a></li>
+      </li>
+			</div>
+<div class="f_size">
+      <li class="nav-item">
+       <a class="nav-link" href="{% url 'medicine_1:create_medicine' %}"> <span class="glyphicon glyphicon-plus"aria-hidden="true" > </span><strong>   Add Book </strong></a></li>
+      </li>
+</div>
+    </ul>
+
+
+   {% if not request.user.is_authenticated and not "/accounts/login/" in request.get_full_path %}
+		<ul class="nav navbar-nav navbar-right ml-auto">
+			<li class="nav-item">
+				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#" style="font-size:15px;"><span class="glyphicon glyphicon-log-in"aria-hidden="true" > </span>     Login</a>
+				<ul class="dropdown-menu form-wrapper">
+					<li>
+						<form action="{% url 'auth_login' %}" method="post">{% csrf_token %}
+							<p class="hint-text">Sign in if you want full control & posting</p>
+
+							<div class="or-seperator"><b>(:</b></div>
+							<div class="form-group">
+								<input type="text" class="form-control"  name="username"placeholder="Username" required="required">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control"  name="password"placeholder="Password" required="required">
+							</div>
+							<input type="submit" class="btn  btn-amego  btn-block" value="Login">
+							<div class="form-footer">
+								<a href="#">Forgot Your password?</a>
+							</div>
+						</form>
+					</li>
+				</ul>
+
+			</li>
+			   </ul>
+    {% endif %}
+	<ul class="nav navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}
+			<div class="f_size">
+				<li class="nav-item">
+            <li><a   href="{% url 'auth_logout' %}"><span class="glyphicon glyphicon-log-out"aria-hidden="true" > </span>   Logout</a></li>
+         	</li>
+		</div>
+
+            {% else %}
+           <!-- <li><a href="{% url 'auth_login' %}">Login</a></li>   -->
+
+		<div class="f_size">
+				<li class="nav-item">
+            		<li><a   href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-globev"aria-hidden="true" > </span>Register</a></li>
+            	</li>
+		</div>
+
+
+
+            {% endif %}
+
+
+		</ul>
+	</div>
+	</div>
+</nav>
+{% endblock %}

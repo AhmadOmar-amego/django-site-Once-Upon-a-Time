@@ -1,0 +1,214 @@
+<style>
+    .comment4 {
+    margin: 20px 0px 20px 20px;
+}
+.vfor{
+width: 100%;
+}
+tooltip {
+    max-width: 350px;
+    /* If max-width does not work, try using width instead */
+    width: 350px;
+    height:300px
+}
+      .comment {
+      width: 40%;
+      height: 100px;
+      padding: 10px;
+      background-color: #d0e2bc;
+      }
+      .poo {
+    font-size:18px;
+    color:#3e71a3;
+    font-weight:bold;
+    font-style:italic;
+}
+
+mark.red {
+    color:#ff0000;
+    background: none;
+}
+
+mark.blue {
+    color:#0000A0;
+    background: none;
+}
+    </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+{% block body %}
+<html>
+<head>
+{% include 'navbar.html' %}
+{% load poll_extras %}
+
+</head>
+<body>
+<div class="row">
+    <div class="col-sm-8">
+{% include 'adds_on/jumbotron.html' %}
+<div class="card text-center">
+  <div class="card-header">
+    Your Rating
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Put your rating here !</h5>
+    <p class="card-text">Your assessment of this drug will help other people to see if this drug is useful or not</p>
+       {% include 'adds_on/your_rating.html' %}
+          <a href="#!" class="btn btn-primary">Submit</a>
+      <div class="container-fluid">
+          {% include 'adds_on/rating.html' %}
+      </div>
+
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+    </div>       <div class="col-sm-4">
+ {% if request.user.is_authenticated %}
+  <div class="card">
+  <div class="card-header"><span class="glyphicon glyphicon-user"aria-hidden="true"></span><mark class="blue"> {{user}}  </mark>
+    Leave your comment here Please :
+  </div>
+      <div class="vfor">
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+         <form  method="post" action="add_comment_to_post">      {% csrf_token %}
+             <div class="vfor">
+                        <textarea class="comment" placeholder="Type your comment here."></textarea>
+             </div>
+
+
+
+                        <br>
+                        <input type="submit" name="submit" value="Send">
+                    </form>
+
+
+             {% else %}
+
+        <div class="row">
+  <div class="col-12 col-md-8">.if you want to comment please !! </div>
+  <div class="col-6 col-md-4">        <a class="btn btn-default" href="{% url 'registration_register' %}" target="_blank"><strong>          Register Now   </strong></a>
+</div>
+</div>
+
+
+
+        <footer class="blockquote-footer">your comment shows <cite title="Source Title">to others</cite></footer>
+    </blockquote>
+  </div>
+</div>
+       {% endif %}
+ <hr>
+{% for comment in medicine.comments.all %}
+
+
+
+    <div class="comment4">
+        <div class="date">{{ comment.created_date  }}</div>
+        <h3><strong>{{ comment.author }}</strong></h3>
+
+
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow=" 25" aria-valuemin="0" aria-valuemax="100"> 25%</div>
+</div>
+
+
+
+        <div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+
+
+
+      </h5>
+    </div>
+
+      <div class="card-body">
+{{ comment.text }}      </div>
+
+  </div>
+
+</div>
+
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+   </div>   </div>
+
+<h1>fffff{{vfornothing}}</h1>
+
+<script>
+$( "buttonforwarn" ).click(function() {
+  $( "pad" ).toggle( "slow" );
+});
+</script>
+</div>
+<h1>here booking</h1>
+
+
+<a href="{% url 'medicine_1:Update'   %}" />
+    <button id="approve-btn" />Approve</button>
+</a>
+
+
+
+
+
+
+
+                                        <form action="{% url 'medicine_1:bokok'  %}" method="post" >
+                                        {% csrf_token %}
+                                            {{vforvendata}}
+                                             <button  type="submit" name="post_id" value="{{ album.id }}">Book</button>
+                                        </form>
+                                               {% for user in medicine.is_booker.all %}
+                                                {{user.username}}
+                                                  <strong>{{ medicine.is_booker.all.count }} {{vforvendata}} :: is_booker</strong>
+                                               {% endfor %}
+                                        <strong>{{ album.is_booker.all.count }} {{vforvendata}} :: is_booker</strong>
+
+{% for comment in medicine.comments.all %}
+
+
+
+  <div class="card">
+    <div class="card-header" >
+      <h5 class="mb-0">
+
+
+
+      </h5>
+    </div>
+
+      <div class="card-body">
+
+      </div>
+
+  </div>
+
+
+ <h3>{{ comment.text|jump_link }}</h3>
+
+ <h3>{{ comment.text|jump_link_2 }}</h3>
+
+ <h3>{{ comment.text|jump_link_3 }}</h3>
+
+ <h3>{{ comment.text|jump_link_4 }}</h3>
+
+{% endfor %}
+
+</body>
+
+
+
+</html>
+{% endblock %}

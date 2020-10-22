@@ -1,0 +1,151 @@
+<style>
+    .gg_amego{
+    color:#134657;
+    }
+.container_amego {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+ .top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+
+
+
+</style>
+<script>
+    function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+}
+
+
+</script>
+
+<!DOCTYPE html>
+{% include 'navbar.html' %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+
+
+
+
+
+{% block body %}
+{% include 'adds_on/jumptron_all_med.html' %}
+<div class="albums-container container-fluid">
+
+    <!-- Albums -->
+    <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+        {% if albums %}
+            {% for album in albums %}
+                <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail">
+
+                        <a href="{% url 'medicine_1:medicine___' album.id  %} ">
+                            <div class="container_amego">
+                            <div class="top-left"><span style="color: #e3d322;font-size:20px;"class="r"><i class="fa fa-star checked"><i>{{ album.rating_book }}</i></i></span></div>
+                            <img src="{{ album.logo_medicine.url }}" class="img-responsive">
+                                 </div>
+                        </a>
+
+                        <div class="caption">
+                            <h3 class="gg_amego" style="text-decoration: underline;"> {{ album.medicine_title }} </h3>
+                            <h5 class="gg_amego "><small>Author: {{ album.author }} </small></h5>
+
+                            <div class="overflow-auto"><h4>{{ album.simple_desciption }}</h4></div>
+                            <h4>  <small>{{ album.place_of_medicine }}</small></h4>
+                            <h6  >  <small> Language of Book ---> {{ album.language_of_book }}</small></h6>
+
+                            <!-- View Details -->
+                            <a href="{% url 'medicine_1:medicine___'  album.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+
+                             <!-- Delete Album -->
+
+                            <!-- Favorite Album -->
+                            <a href="{% url 'medicine_1:favorite_medicine' album.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
+                                <span class="glyphicon glyphicon-heart {% if medicine.is_favorite %}active{% endif %}"></span> love it
+                            </a>
+
+
+<input  class = 'btn btn-default ' id="button" type="button"  style= "color:black" value="Book Now" onclick="return change(this); setColor('button', '#101010')" />
+
+
+                            <p><small>{{ album.date_of_launch_medicine }}</small></p>
+                               <p><small> <small>posted by  {{ album.user }}</small></small></p>
+
+
+
+                                        <form action="{% url 'medicine_1:bokok'  %}" method="post" >
+                                        {% csrf_token %}
+                                                                     {% for field in form %}
+                                            {{ field }}
+                                                                             <span class="text-danger small">{{ field }}</span>
+
+                                             <button  type="submit" name="post_id" value="album.id">Book</button>
+                                             {% endfor  %}
+                                        </form>
+
+
+                                        <strong>{{ album.is_booker.all.count }} {{vforvendata}} :: is_booker</strong>
+
+
+                        </div>
+                    </div>
+                </div>
+                {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+            {% endfor %}
+        {% else %}
+            <div class="col-sm-12">
+                <br>
+                <a href="{% url 'medicine_1:create_medicine' %}">
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp; Add an Medicine
+                    </button>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% include 'adds_on/footer.html' %}
+</body>
+<script type="text/javascript">
+function change( el )
+{
+    if ( el.value === "Book Now" )
+         el.value = "Booked by  {{user}}";
+
+     else
+        el.value = "Book Now";
+
+
+}
+
+
+</script>
+</html>

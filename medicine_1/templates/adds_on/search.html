@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% include 'navbar.html' %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+{% block body %}
+    <!-- FORM SEARCH -->
+    <div class="form"style="font-size:15px;" >
+      <form method ="GET" action="{% url 'medicine_1:Search'  %}">
+        <label for="form-search"></label>
+        <input  name="q"  value="{{request.GET.q}}"  type="text" id="form-search" placeholder="What you are looking for?">
+          <div class="button">
+<button class="btn btn-success" type="submit">Search</button>>
+    </div>
+      </form>
+
+    </div>
+
+    <!-- BUTTONS -->
+
+
+
+<div class="albums-container container-fluid">
+
+    <!-- Albums -->
+    <div class="row">
+
+        {% if model %}
+            {% for album in model %}
+                <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail">
+                        <a href="{% url 'medicine_1:medicine___' album.id  %} ">
+                            <img src="{{ album.logo_medicine.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <h2>{{ album.medicine_title }}</h2>
+                            <h4>{{ album.place_of_medicine }}</h4>
+                        </div>
+                    </div>
+                </div>
+
+        {% endfor %}
+                {% else %}
+
+        <h1>We are Sorry We Not Found Your Book</h1>
+                {% endif %}
+   </div>
+   </div>
+
+
+{% endblock %}
+
+{% include 'adds_on/footer.html' %}
+</body>
+</html>

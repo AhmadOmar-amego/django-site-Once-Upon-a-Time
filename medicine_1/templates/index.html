@@ -1,0 +1,81 @@
+<style>
+ .p_amego{font-size: 60px;
+   font-family: 'Lobster', cursive;
+   }
+
+    .h3_amego {
+  text-align: center;
+}
+.red_amego{color :#c94a38;}
+.orange_amego{color:#f48f00;}
+.blue_amego{color:#007fad;}
+
+
+
+
+</style>
+
+
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% include 'navbar.html' %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<div class="h3_amego">
+    <div class="p_amego">
+        <p><span class="blue_amego"><strong>Once</strong></span><span class="orange_amego"><strong> Upon </strong></span><span class="red_amego"><strong>a Time</strong></span></p>
+</div>
+    <br>
+    <br>
+    <h3>this the easiest way to search and rate  books and see other </h3>
+    <h3>people how impact books in him.</h3>
+
+</div>
+
+{% block body %}
+{% include 'adds_on/Search_form.html' %}
+
+
+
+
+
+{% endblock %}
+   <br>
+   <br>
+
+    <br>   <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+{% include 'adds_on/footer.html' %}
+</body>
+<script type="text/javascript">
+
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+
+</script>
+</html>

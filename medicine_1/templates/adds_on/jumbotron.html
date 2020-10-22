@@ -1,0 +1,190 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
+
+
+<style>
+    .center{
+      display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+    }
+.centertext{
+
+ text-align: center;}
+ .clearfix {
+  overflow: auto;
+}
+input, label{
+  display: inline-block;
+  vertical-align: middle;
+  mar
+  .fill {object-fit: fill;}gin: 10px 0;
+}
+</style>
+
+
+<!-- Jumbotron -->
+<div class="jumbotron text-center">
+
+  <!-- Title -->
+<div class="row no-gutters bg-light position-relative">
+  <div class="col-md-6 mb-md-0 p-md-4">
+              <!-- Card image -->
+                    <div class="view overlay my-4">
+                      <div class="img-fluid img-thumbnail">
+                         <img   class="img-fluid " alt="">
+                                 <a href="{% url 'medicine_1:medicine___' medicine.id %}">
+                        {% if medicine.logo_medicine %}
+                            <img src="{{ medicine.logo_medicine.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                       </a>
+                        </div>
+                            </div>
+
+  </div>
+
+  <div class="col-md-6 position-static p-4 pl-md-0">
+          <div class="d-flex align-items-end flex-column" style="height: 100px;">
+
+          <div class="p-2">
+
+              <h2 style="font-size: 35px;color:#3d4f75;text-decoration: underline;" class="card-title h2 pb-2"><strong>اسم الكتاب :  {{ medicine }} </strong></h2>
+          </div>
+          <div class="p-2">
+              <h6 style="font-size: 25px;" class="card-title h6 pb-2">اسم المؤلف:   {{ medicine.author }}    </h6>
+          </div>
+          <div class=="p-2">
+               <h5 style="font-size: 25px;"class="indigo-text h5 mb-4">نوع الكتاب:   {{ medicine.genre }}</h5>
+          </div>
+          <div class=="p-2">
+               <h5 style="font-size: 25px;"class="indigo-text h5 mb-4">اللغة:   {{ medicine.language_of_book }}</h5>
+          </div>
+              <div class=="p-2">
+               <h5 style="font-size: 25px;"class="indigo-text h5 mb-4">عدد الصفحات:   {{ medicine.number_of_pages }}</h5>
+          </div>
+                    <div class=="p-2">
+               <h5 style="font-size: 25px;"class="indigo-text h5 mb-4">الشركة الناشرة:   {{ medicine.company }}</h5>
+          </div>
+
+                           <div class=="p-2">
+               <h5 style="font-size: 25px;"class="indigo-text h5 mb-4">تاريخ النشر:   {{ medicine.date_of_launch_book }}</h5>
+          </div>
+
+                                 <div class=="p-2">
+               <h5 style="font-size: 25px;"class="indigo-text h5 mb-4">    {{ medicine.rating_book }}  : Rating </h5>
+          </div>
+           </div>
+
+
+
+
+  </div>
+</div>
+
+
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+         <div style="font-size: 27px;">
+          معلومات عن حجز الكتاب </div>
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+                   <p class="card-text"><span style="color:#709dff; text-decoration: underline;text-align:right;">هل الكتاب محجوز </span>---> {{ medicine.is_book }}</p>
+                   <p class="card-text"><span style="color:#709dff; text-decoration: underline;text-align:right;">مكان مالك الكتاب من اجل المبادلة :</span>---> {{ medicine.place_of_medicine }}</p>
+          <p class="card-text"><small><span style="color:#709dff; text-decoration: underline;text-align:right;">تاريخ نشر المنشور :</span>---> {{ medicine.date_of_launch_medicine }}</small></p>
+ {% if request.user.is_authenticated %}
+  <div class="card-header"><span class="glyphicon glyphicon-user"aria-hidden="true"></span><mark class="blue"> {{user}}  </mark>
+    Do you want to book ??
+  </div>
+<input  class = 'btn btn-default ' id="button" type="button"  style= "color:black" value="Book Now" onclick="return change(this); setColor('button', '#101010')" />
+  {% else %}
+        <div class="row">
+  <div class="col-12 col-md-8">.if you want to comment please !! </div>
+  <div class="col-6 col-md-4">        <a class="btn btn-default" href="{% url 'registration_register' %}" target="_blank"><strong>          Register Now   </strong></a>
+</div>
+</div>
+             {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+             <div style="font-size: 27px;">
+         معلومات عن الناشر
+             </div>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+           <p class="card-text"><span style="color:#709dff; text-decoration: underline;">Username :</span>---> {{ medicine.user }}</p>
+           <p class="card-text"><span style="color:#709dff; text-decoration: underline;">Email for contact:</span>---> {{ medicine.email_user }}</p>
+           <p class="card-text"><span style="color:#709dff; text-decoration: underline;">Phone for contact:</span>---> not valid</p>
+
+       </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <div style="font-size: 27px;"> وصف الكتاب
+          </div>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+   <p class="card-text">{{ medicine.description_medicine }}</p>      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <a href="{% url 'medicine_1:detail_of_med' medicine.id %}">
+            <label class="control-label" >For more detail about Book pleace press here: </label>
+                    <button type="button" class="btn btn-outline-primary ">
+                        <span class="glyphicon glyphicon-chevron-right"></span>&nbsp; Detail Here !
+                    </button>
+                </a>
+
+
+    </div>
+<!-- Jumbotron -->
+
+ <script type="text/javascript">
+function change( el )
+{
+    if ( el.value === "Book Now" )
+         el.value = "Booked by  {{user}}";
+
+     else
+        el.value = "Book Now";
+
+
+}
+
+
+</script>
